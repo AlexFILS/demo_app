@@ -1,5 +1,6 @@
 package com.example.coco.demoapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,14 +15,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
-Button btnLogin;
-TextView txtUsername,txtPassword, txtAlert;
-CheckBox cboxPeek, cboxRemember;
-SharedPreferences prefs;
-SharedPreferences.Editor prefedit;
-Boolean users_already_stored = false, remember_me=false;
-Set<Users> user_list = new HashSet<>();
-//no duplicates
+    private Button btnLogin;
+    private  TextView txtUsername,txtPassword, txtAlert;
+    private  CheckBox cboxPeek, cboxRemember;
+    private  SharedPreferences prefs;
+    private SharedPreferences.Editor prefedit;
+    private Boolean users_already_stored = false, remember_me=false;
+    private Set<Users> user_list = new HashSet<>();
+    //no duplicates
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -70,8 +71,11 @@ Set<Users> user_list = new HashSet<>();
                 if (u.getUsername().compareTo(input_user) == 0 && u.getPassword().compareTo(input_password) == 0) {
                     Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
                     match = true;
-                    txtAlert.setText("Welcome aboard, " + input_user + "!");
-                    txtAlert.setVisibility(View.VISIBLE);
+                    //removed after testing:     txtAlert.setText("Welcome aboard, " + input_user + "!");
+                    //removed after testing:     txtAlert.setVisibility(View.VISIBLE);
+                    Intent listscreen = new Intent(MainActivity.this, ListScreen.class);
+                    listscreen.putExtra("acc_logged", u.getUsername().toString());
+                    startActivity(listscreen);
                     break;
                 }
             }
