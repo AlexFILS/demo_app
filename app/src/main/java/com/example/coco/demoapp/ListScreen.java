@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,17 @@ public class ListScreen extends AppCompatActivity {
         rView.setItemAnimator(new DefaultItemAnimator());
         rView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         rView.setAdapter(oAdapter);
+        rView.addOnItemTouchListener(
+                new RecyclerItemClickListener(this, rView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        Toast.makeText(getApplicationContext(), "Pressed "+ position, Toast.LENGTH_LONG).show();
 
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                }));
         prepareData();
         populateLists(objects);
         btnActive=findViewById(R.id.btnActive);

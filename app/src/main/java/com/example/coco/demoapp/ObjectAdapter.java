@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,8 @@ import java.util.List;
 
 public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.MyViewHolder>{
 List<ObjectsMainList> object_list=  new ArrayList<>();
+
+
 
 public ObjectAdapter(List objectList){
     this.object_list=objectList;
@@ -27,6 +30,7 @@ public ObjectAdapter(List objectList){
         View itemView= LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row,parent,false);
     return new MyViewHolder(itemView);
     }
+
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
