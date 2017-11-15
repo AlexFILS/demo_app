@@ -5,5 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.coco.demoapp.ExpandableListActi">
-
+    <ExpandableListView
+        android:id="@+id/ExpList"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:groupIndicator="@null" />
 </android.support.constraint.ConstraintLayout>
