@@ -1,23 +1,18 @@
 package com.example.coco.demoapp;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link BottomButtons.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link BottomButtons#newInstance} factory method to
- * create an instance of this fragment.
+ * Created by Coco on 15.11.2017.
  */
-public class BottomButtons extends Fragment {
+
+public class ListClass extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,9 +22,9 @@ public class BottomButtons extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private BottomButtons.OnFragmentInteractionListener mListener;
 
-    public BottomButtons() {
+    public ListClass() {
         // Required empty public constructor
     }
 
@@ -64,9 +59,7 @@ public class BottomButtons extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.lay_btns,
-                container, false);
-        return view;
+        return inflater.inflate(R.layout.lay_list, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -75,18 +68,18 @@ public class BottomButtons extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+//
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        if (context instanceof BottomButtons.OnFragmentInteractionListener) {
+//            mListener = (BottomButtons.OnFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
+//    }
 
- /*   @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-*/
     @Override
     public void onDetach() {
         super.onDetach();
