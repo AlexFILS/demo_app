@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="130dp">
+    android:layout_height="wrap_content">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="91dp"
+        android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
@@ -21,8 +21,10 @@
             android:id="@+id/Wo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
 
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/type"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -34,6 +36,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             tools:layout_editor_absoluteX="8dp"
+            android:layout_below="@+id/Wo"
             tools:layout_editor_absoluteY="60dp" />
 
         <TextView

@@ -8,11 +8,18 @@ public class ObjectsMainList {
     private String WO;
     private String description;
     private String type;
+    private int state;
 
-    public ObjectsMainList(String WO, String description, String type) {
+    public int getState() {
+        return state;
+    }
+
+    public ObjectsMainList(String WO, String description, String type, int state) {
         this.WO = WO;
         this.description = description;
         this.type = type;
+        this.state=state;
+
     }
 
     public String getWO() {
@@ -26,4 +33,6 @@ public class ObjectsMainList {
     public String getType() {
         return type;
     }
+
+
 }

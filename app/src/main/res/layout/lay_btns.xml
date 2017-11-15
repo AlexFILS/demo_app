@@ -19,7 +19,8 @@
             android:layout_alignTop="@+id/btnFinished"
             android:layout_toLeftOf="@+id/btnFinished"
             android:layout_toStartOf="@+id/btnFinished"
-            android:text="Button" />
+            android:onClick="showActive"
+            android:text="@string/btnActive" />
 
         <Button
             android:id="@+id/btnFinished"
@@ -27,7 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="Button" />
+            android:onClick="showFinsihed"
+            android:text="@string/btnFinished" />
 
         <Button
             android:id="@+id/btnActivenonpm"
@@ -38,7 +40,8 @@
             android:layout_alignParentRight="true"
             android:layout_toEndOf="@+id/btnFinished"
             android:layout_toRightOf="@+id/btnFinished"
-            android:text="Button"
+            android:onClick="showNopm"
+            android:text="@string/btnNoPM"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="536dp" />
     </RelativeLayout>

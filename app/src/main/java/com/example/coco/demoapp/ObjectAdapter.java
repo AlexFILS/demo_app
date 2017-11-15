@@ -43,8 +43,8 @@ public ObjectAdapter(List objectList){
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-    public TextView WO,description,type;
-        public MyViewHolder(View itemView) {
+    private TextView WO,description,type;
+        private MyViewHolder(View itemView) {
             super(itemView);
             WO=itemView.findViewById(R.id.Wo);
             type=itemView.findViewById(R.id.type);
