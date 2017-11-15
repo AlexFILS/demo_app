@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ private ObjectAdapter oAdapter;
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rView.setLayoutManager(mLayoutManager);
         rView.setItemAnimator(new DefaultItemAnimator());
+        rView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         rView.setAdapter(oAdapter);
 
         prepareData();

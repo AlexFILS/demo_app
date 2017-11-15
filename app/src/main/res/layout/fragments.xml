@@ -14,7 +14,7 @@
             android:id="@+id/fragBtns"
             android:name="com.example.coco.demoapp.BottomButtons"
             android:layout_width="fill_parent"
-            android:layout_height="90px"
+            android:layout_height="130px"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -25,10 +25,10 @@
             android:name="com.example.coco.demoapp.ListClass"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/fragBtns"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            tools:layout="@layout/lay_list"/>
+            android:layout_alignParentTop="true"
+            tools:layout="@layout/lay_list" />
     </RelativeLayout>
 
 </FrameLayout>
