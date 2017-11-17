@@ -20,9 +20,12 @@ public class ListScreen extends AppCompatActivity {
     private List<ObjectsMainList> active = new ArrayList<>(); //state 1 (the int value inside the ObjectsMainList class)
     private List<ObjectsMainList> finished = new ArrayList<>(); //state 2
     private List<ObjectsMainList> nonpm = new ArrayList<>(); //state 3
+   // private List<ObjectSubdivision> subdivision= new ArrayList<>();
+    //private List<SubdivisionElement> sElement = new ArrayList();
     private RecyclerView rView;
     private ObjectAdapter oAdapter;
     private Button btnActive, btnFnished, btnNonPM;
+    public TreeClass tree;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class ListScreen extends AppCompatActivity {
                 new RecyclerItemClickListener(this, rView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         Toast.makeText(getApplicationContext(), "Pressed "+ position, Toast.LENGTH_LONG).show();
+                        Intent expandable = new Intent(ListScreen.this,ExpandableListActi.class);
+                        startActivity(expandable);
 
                     }
 
@@ -74,6 +79,20 @@ public class ListScreen extends AppCompatActivity {
     }
 
     private void prepareData() {
+
+      /* SubdivisionElement se1 = new SubdivisionElement("Start date:","11/11/17");
+        sElement.add(se1);
+        ObjectSubdivision element = new ObjectSubdivision("Info:",sElement);
+       subdivision.add(element); */
+        ObjectElement description = new ObjectElement("Description", "Element description");
+        ObjectElement materials = new ObjectElement("Materials", "List of materials");
+        ObjectElement timestamp = new ObjectElement("Timestamp", "Timestamps");
+
+        ObjectSubelement wood = new ObjectSubelement("Material","Wood");
+        ObjectSubelement iron = new ObjectSubelement("Material","Iron");
+        ObjectSubelement copper = new ObjectSubelement("Material","Copper");
+
+        //TreeClass parentNode =new TreeClass("Parent");
 
         ObjectsMainList o1 = new ObjectsMainList("Test", "Desc", "6", 1);
         objects.add(o1);
