@@ -12,20 +12,21 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ListScreen extends AppCompatActivity {
     private List<ObjectsMainList> objects = new ArrayList<>();
     private List<ObjectsMainList> active = new ArrayList<>(); //state 1 (the int value inside the ObjectsMainList class)
     private List<ObjectsMainList> finished = new ArrayList<>(); //state 2
     private List<ObjectsMainList> nonpm = new ArrayList<>(); //state 3
-   // private List<ObjectSubdivision> subdivision= new ArrayList<>();
-    //private List<SubdivisionElement> sElement = new ArrayList();
     private RecyclerView rView;
     private ObjectAdapter oAdapter;
     private Button btnActive, btnFnished, btnNonPM;
-    public TreeClass tree;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +42,17 @@ public class ListScreen extends AppCompatActivity {
         rView.addOnItemTouchListener(
                 new RecyclerItemClickListener(this, rView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                        Toast.makeText(getApplicationContext(), "Pressed "+ position, Toast.LENGTH_LONG).show();
+
+                        ObjectsMainList toSend= objects.get(position);
+
+
+
                         Intent expandable = new Intent(ListScreen.this,ExpandableListActi.class);
+                        Toast.makeText(getApplicationContext(), "Pressed "+ toSend.getWO().toString(), Toast.LENGTH_LONG).show();
+
+                        expandable.putExtra("Send",toSend);
+
+
                         startActivity(expandable);
 
                     }
@@ -80,39 +90,64 @@ public class ListScreen extends AppCompatActivity {
 
     private void prepareData() {
 
-      /* SubdivisionElement se1 = new SubdivisionElement("Start date:","11/11/17");
-        sElement.add(se1);
-        ObjectSubdivision element = new ObjectSubdivision("Info:",sElement);
-       subdivision.add(element); */
-        ObjectElement description = new ObjectElement("Description", "Element description");
-        ObjectElement materials = new ObjectElement("Materials", "List of materials");
-        ObjectElement timestamp = new ObjectElement("Timestamp", "Timestamps");
+      /*  Map<String,List<String>> myMap = new HashMap<>();
 
-        ObjectSubelement wood = new ObjectSubelement("Material","Wood");
-        ObjectSubelement iron = new ObjectSubelement("Material","Iron");
-        ObjectSubelement copper = new ObjectSubelement("Material","Copper");
+        List<String> woInfo = new ArrayList<>();
+        List<String> objectInfo=new ArrayList<>();
+        List<String> timeframe = new ArrayList<>();
+        List<String> materials = new ArrayList<>();
 
-        //TreeClass parentNode =new TreeClass("Parent");
+        woInfo.add("Fan motor failure");
+        woInfo.add("200");
+        woInfo.add("Lorem ipsum");
+        myMap.put("WO Info",woInfo);
 
-        ObjectsMainList o1 = new ObjectsMainList("Test", "Desc", "6", 1);
+        objectInfo.add("200kg");
+        objectInfo.add("20/10/1999");
+        myMap.put("Object Info",objectInfo);
+
+        timeframe.add("19 FEB 2017");
+        timeframe.add("2 NOV 2017");
+        myMap.put("Timeframe",timeframe);
+
+        materials.add("Wood");
+        materials.add("Iron");
+        myMap.put("Materials",materials);
+
+
+
+
+
+        ObjectSubelement o =new ObjectSubelement("Information",myMap);*/
+      List<String> elements = new ArrayList<>();
+        elements.add("Fan motor failure");
+        elements.add("200");
+        elements.add("Lorem ipsum");
+        elements.add("200kg");
+        elements.add("2 NOV 2017");
+        elements.add("19 FEB 2017");
+        elements.add("Wood");
+        elements.add("Iron");
+
+        ObjectsMainList o1 = new ObjectsMainList("Test", "Desc", "6", 1,elements);
         objects.add(o1);
 
-        ObjectsMainList o2 = new ObjectsMainList("Test", "Desc", "625", 1);
+        ObjectsMainList o2 = new ObjectsMainList("Test", "Desc", "625", 1,elements);
         objects.add(o2);
 
-        ObjectsMainList o3 = new ObjectsMainList("Test22", "Desc", "63", 2);
+        ObjectsMainList o3 = new ObjectsMainList("Test22", "Desc", "63", 2,elements);
         objects.add(o3);
 
-        ObjectsMainList o4 = new ObjectsMainList("Test53", "Desc", "26", 3);
+        ObjectsMainList o4 = new ObjectsMainList("Test53", "Desc", "26", 3,elements);
         objects.add(o4);
 
-        ObjectsMainList o5 = new ObjectsMainList("Test26", "Desc", "446", 3);
+        ObjectsMainList o5 = new ObjectsMainList("Test26", "Desc", "446", 3,elements);
         objects.add(o5);
 
-        ObjectsMainList o6 = new ObjectsMainList("Test77", "Desc", "56", 3);
+        ObjectsMainList o6 = new ObjectsMainList("Test77", "Desc", "56", 3,elements);
         objects.add(o6);
 
-        ObjectsMainList o7 = new ObjectsMainList("Test8567", "Desc", "636", 1);
+        ObjectsMainList o7 = new ObjectsMainList("Test8567", "Desc", "636", 1,elements);
         objects.add(o7);
 
         oAdapter.notifyDataSetChanged();
