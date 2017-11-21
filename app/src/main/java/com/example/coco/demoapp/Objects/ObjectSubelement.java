@@ -1,4 +1,4 @@
-package com.example.coco.demoapp;
+package com.example.coco.demoapp.Objects;
 
 import android.os.Parcel;
 import android.os.Parcelable;

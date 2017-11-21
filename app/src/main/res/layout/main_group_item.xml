@@ -20,8 +20,8 @@
             android:id="@+id/txtDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:paddingRight="300dp"/>
+
+            android:text="TextView" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

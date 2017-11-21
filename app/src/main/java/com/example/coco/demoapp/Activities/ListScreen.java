@@ -1,4 +1,4 @@
-package com.example.coco.demoapp;
+package com.example.coco.demoapp.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,14 +9,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.Serializable;
+import com.example.coco.demoapp.Adapters.ObjectAdapter;
+import com.example.coco.demoapp.ClickListeners.RecyclerItemClickListener;
+import com.example.coco.demoapp.Objects.ObjectsMainList;
+import com.example.coco.demoapp.R;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ListScreen extends AppCompatActivity {
     private List<ObjectsMainList> objects = new ArrayList<>();
@@ -90,35 +91,6 @@ public class ListScreen extends AppCompatActivity {
 
     private void prepareData() {
 
-      /*  Map<String,List<String>> myMap = new HashMap<>();
-
-        List<String> woInfo = new ArrayList<>();
-        List<String> objectInfo=new ArrayList<>();
-        List<String> timeframe = new ArrayList<>();
-        List<String> materials = new ArrayList<>();
-
-        woInfo.add("Fan motor failure");
-        woInfo.add("200");
-        woInfo.add("Lorem ipsum");
-        myMap.put("WO Info",woInfo);
-
-        objectInfo.add("200kg");
-        objectInfo.add("20/10/1999");
-        myMap.put("Object Info",objectInfo);
-
-        timeframe.add("19 FEB 2017");
-        timeframe.add("2 NOV 2017");
-        myMap.put("Timeframe",timeframe);
-
-        materials.add("Wood");
-        materials.add("Iron");
-        myMap.put("Materials",materials);
-
-
-
-
-
-        ObjectSubelement o =new ObjectSubelement("Information",myMap);*/
       List<String> elements = new ArrayList<>();
         elements.add("Fan motor failure");
         elements.add("200");
@@ -179,5 +151,12 @@ public class ListScreen extends AppCompatActivity {
         rView.setItemAnimator(new DefaultItemAnimator());
         rView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         rView.setAdapter(oAdapter);
+    }
+
+    public List<ObjectsMainList> listReturn (List<ObjectsMainList> inputList){
+
+ //TODO: complete code to return the list depeding on the selected view.
+
+        return inputList;
     }
 }

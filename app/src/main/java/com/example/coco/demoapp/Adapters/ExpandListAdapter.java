@@ -1,4 +1,4 @@
-package com.example.coco.demoapp;
+package com.example.coco.demoapp.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+
+import com.example.coco.demoapp.Objects.ExpandListChild;
+import com.example.coco.demoapp.Objects.ExpandListGroup;
+import com.example.coco.demoapp.R;
 
 import java.util.ArrayList;
 
@@ -50,7 +54,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         }
         TextView tv = (TextView) view.findViewById(R.id.tvChild);
         tv.setText(child.getName().toString());
-        tv.setTag(child.getTag());
+        tv.setTag(child.getTagg().toString());
         TextView tc = view.findViewById(R.id.txtDetail);
         tc.setText(tv.getTag().toString());
         // TODO Auto-generated method stub

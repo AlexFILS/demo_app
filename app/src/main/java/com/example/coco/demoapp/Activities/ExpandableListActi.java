@@ -1,12 +1,16 @@
-package com.example.coco.demoapp;
+package com.example.coco.demoapp.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
-import java.io.Serializable;
+import com.example.coco.demoapp.Adapters.ExpandListAdapter;
+import com.example.coco.demoapp.Objects.ExpandListChild;
+import com.example.coco.demoapp.Objects.ExpandListGroup;
+import com.example.coco.demoapp.Objects.ObjectsMainList;
+import com.example.coco.demoapp.R;
+
 import java.util.ArrayList;
 
 public class ExpandableListActi extends AppCompatActivity {
@@ -37,101 +41,63 @@ public class ExpandableListActi extends AppCompatActivity {
 
 
     public ArrayList<ExpandListGroup> SetStandardGroups() {
-/*
-        ArrayList<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
-        ArrayList<ExpandListChild> list2 = new ArrayList<ExpandListChild>();
-        ExpandListGroup gru1 = new ExpandListGroup();
 
-
-        ExpandListChild ch1_1 = new ExpandListChild();
-        ch1_1.setName(toDosplay.getWO().toString());
-        ch1_1.setTag(null);
-        list2.add(ch1_1);
-        ExpandListChild ch1_2 = new ExpandListChild();
-        ch1_2.setName(toDosplay.getDescription().toString());
-        ch1_2.setTag(null);
-        list2.add(ch1_2);
-        ExpandListChild ch1_3 = new ExpandListChild();
-        ch1_3.setName("And an other movie");
-        ch1_3.setTag(null);
-        list2.add(ch1_3);
-        gru1.setItems(list2);
-        list2 = new ArrayList<ExpandListChild>();
-
-        ExpandListGroup gru2 = new ExpandListGroup();
-        gru2.setName("Action");
-        ExpandListChild ch2_1 = new ExpandListChild();
-        ch2_1.setName("A movie");
-        ch2_1.setTag(null);
-        list2.add(ch2_1);
-        ExpandListChild ch2_2 = new ExpandListChild();
-        ch2_2.setName("An other movie");
-        ch2_2.setTag(null);
-        list2.add(ch2_2);
-        ExpandListChild ch2_3 = new ExpandListChild();
-        ch2_3.setName("And an other movie");
-        ch2_3.setTag(null);
-        list2.add(ch2_3);
-        gru2.setItems(list2);
-        list.add(gru1);
-        list.add(gru2);
-*/
         ArrayList<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
         ArrayList<ExpandListChild> list2 = new ArrayList<ExpandListChild>();
 
 
 
-
-
         ExpandListGroup gru1 = new ExpandListGroup();
-        ExpandListGroup listt = new ExpandListGroup();
+
         gru1.setName("WO Info");
         ExpandListChild ch1_1 = new ExpandListChild();
         ch1_1.setName("Directive: ");
-        ch1_1.setTag(toDosplay.returnSpecificItem(0));
+        ch1_1.setTagg(toDosplay.returnSpecificItem(0));
         list2.add(ch1_1);
         ExpandListChild ch1_2 = new ExpandListChild();
         ch1_2.setName("Work Type: ");
-        ch1_2.setTag(toDosplay.returnSpecificItem(1));
+        ch1_2.setTagg(toDosplay.returnSpecificItem(1));
         list2.add(ch1_2);
         ExpandListChild ch1_3 = new ExpandListChild();
         ch1_3.setName("Fault description: ");
-        ch1_3.setTag(toDosplay.returnSpecificItem(2));
+        ch1_3.setTagg(toDosplay.returnSpecificItem(2));
         list2.add(ch1_3);
         gru1.setItems(list2);
-        list2 = new ArrayList<ExpandListChild>();
+        list2 = new ArrayList<>();
+
 
         ExpandListGroup gru2 = new ExpandListGroup();
         gru2.setName("Object Info");
         ExpandListChild ch2_1 = new ExpandListChild();
         ch2_1.setName("Start date:  ");
-        ch2_1.setTag(toDosplay.returnSpecificItem(4));
+        ch2_1.setTagg(toDosplay.returnSpecificItem(4));
         list2.add(ch2_1);
         ExpandListChild ch2_2 = new ExpandListChild();
         ch2_2.setName("Start date:  ");
-        ch2_2.setTag(toDosplay.returnSpecificItem(5));
+        ch2_2.setTagg(toDosplay.returnSpecificItem(5));
         list2.add(ch2_2);
         gru2.setItems(list2);
-        list2 = new ArrayList<ExpandListChild>();
+        list2 = new ArrayList<>();
 
         ExpandListGroup gru3= new ExpandListGroup();
         gru3.setName("Object info");
         ExpandListChild ch3_1 = new ExpandListChild();
         ch3_1.setName("Somenradomdetail: ");
-        ch3_1.setTag(toDosplay.returnSpecificItem(3));
+        ch3_1.setTagg(toDosplay.returnSpecificItem(3));
         list2.add(ch3_1);
         gru3.setItems(list2);
-        list2 = new ArrayList<ExpandListChild>();
+        list2 = new ArrayList<>();
+
 
         ExpandListGroup gru4= new ExpandListGroup();
         gru4.setName("Materials");
         ExpandListChild ch4_1 = new ExpandListChild();
         ch4_1.setName("Material 1:  ");
-        ch4_1.setTag(toDosplay.returnSpecificItem(6));
+        ch4_1.setTagg(toDosplay.returnSpecificItem(6));
         list2.add(ch4_1);
         ExpandListChild ch4_2 = new ExpandListChild();
         ch4_2.setName("Material 2:  ");
-        ch4_2.setTag(toDosplay.returnSpecificItem(7));
+        ch4_2.setTagg(toDosplay.returnSpecificItem(7));
         list2.add(ch4_2);
         gru4.setItems(list2);
 

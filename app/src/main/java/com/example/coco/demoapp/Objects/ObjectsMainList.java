@@ -1,4 +1,4 @@
-package com.example.coco.demoapp;
+package com.example.coco.demoapp.Objects;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -70,8 +70,8 @@ public class ObjectsMainList implements Serializable {
     public ObjectsMainList(){
 
     }
-String returnSpecificItem( int index){
-    return subelement.get(index);
+public String returnSpecificItem( int index){
+    return subelement.get(index).toString();
 }
 
 }

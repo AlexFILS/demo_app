@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.coco.demoapp.BottomButtons">
+    tools:context="com.example.coco.demoapp.Fragments.BottomButtons">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -12,7 +12,7 @@
 
         <fragment
             android:id="@+id/fragBtns"
-            android:name="com.example.coco.demoapp.BottomButtons"
+            android:name="com.example.coco.demoapp.Fragments.BottomButtons"
             android:layout_width="fill_parent"
             android:layout_height="130px"
             android:layout_alignParentBottom="true"
@@ -22,7 +22,7 @@
 
         <fragment
             android:id="@+id/fragment2"
-            android:name="com.example.coco.demoapp.ListClass"
+            android:name="com.example.coco.demoapp.Fragments.ListClass"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"

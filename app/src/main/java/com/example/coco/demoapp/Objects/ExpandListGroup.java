@@ -1,4 +1,4 @@
-package com.example.coco.demoapp;
+package com.example.coco.demoapp.Objects;
 
 /**
  * Created by Coco on 16.11.2017.

@@ -1,4 +1,4 @@
-package com.example.coco.demoapp;
+package com.example.coco.demoapp.Objects;
 
 /**
  * Created by Coco on 16.11.2017.
@@ -15,10 +15,10 @@ public class ExpandListChild {
     public void setName(String Name) {
         this.Name = Name;
     }
-    public String getTag() {
+    public String getTagg() {
         return Tag;
     }
-    public void setTag(String Tag) {
+    public void setTagg(String Tag) {
         this.Tag = Tag;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.coco.demoapp;
+package com.example.coco.demoapp.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.coco.demoapp.Objects.Users;
+import com.example.coco.demoapp.R;
 
 import java.util.HashSet;
 import java.util.Set;
