@@ -27,6 +27,7 @@ public class ListScreen extends AppCompatActivity {
     private RecyclerView rView;
     private ObjectAdapter oAdapter;
     private Button btnActive, btnFnished, btnNonPM;
+    private int selection;
 
 
     @Override
@@ -34,6 +35,7 @@ public class ListScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragments);
         rView = findViewById(R.id.recycle_view);
+        selection=0;
         oAdapter = new ObjectAdapter(objects);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rView.setLayoutManager(mLayoutManager);
@@ -44,7 +46,26 @@ public class ListScreen extends AppCompatActivity {
                 new RecyclerItemClickListener(this, rView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
 
-                        ObjectsMainList toSend= objects.get(position);
+                        ObjectsMainList toSend = new ObjectsMainList();
+
+                        switch(selection){
+                            case 0:
+                                toSend = objects.get(position);
+                            break;
+                            case 1:
+                                toSend = active.get(position);
+                                break;
+                            case 2:
+                                toSend = finished.get(position);
+                                break;
+                            case 3:
+                               toSend = nonpm.get(position);
+                                break;
+                            default:
+                                break;
+                        }
+                       //int number= objects.get(position).getCreation_number();
+
 
 
 
@@ -59,7 +80,7 @@ public class ListScreen extends AppCompatActivity {
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
-                        // do whatever
+
                     }
                 }));
         prepareData();
@@ -103,12 +124,41 @@ public class ListScreen extends AppCompatActivity {
 
         ObjectsMainList o1 = new ObjectsMainList("Test", "Desc", "6", 1,elements);
         objects.add(o1);
+        elements = new ArrayList<>();
+        elements.add("Electric motor failure");
+        elements.add("420");
+        elements.add("Lorem ipsum");
+        elements.add("100kg");
+        elements.add("12 NOV 2014");
+        elements.add("4 FEB 2013");
+        elements.add("Diamond");
+        elements.add("Iron");
 
         ObjectsMainList o2 = new ObjectsMainList("Test", "Desc", "625", 1,elements);
         objects.add(o2);
 
+        elements = new ArrayList<>();
+        elements.add("Pipe broken");
+        elements.add("543");
+        elements.add("Lorem ipsum");
+        elements.add("456kg");
+        elements.add("12 DEC 2014");
+        elements.add("4 JAN 2015");
+        elements.add("Diamond");
+        elements.add("Steel");
+
         ObjectsMainList o3 = new ObjectsMainList("Test22", "Desc", "63", 2,elements);
         objects.add(o3);
+
+        elements = new ArrayList<>();
+        elements.add("Blade damaged");
+        elements.add("543");
+        elements.add("Lorem ipsum");
+        elements.add("1111kg");
+        elements.add("12 JUN 2014");
+        elements.add("4 OCT 2015");
+        elements.add("Diamond");
+        elements.add("Wool");
 
         ObjectsMainList o4 = new ObjectsMainList("Test53", "Desc", "26", 3,elements);
         objects.add(o4);
@@ -127,6 +177,7 @@ public class ListScreen extends AppCompatActivity {
 
 
     public void showActive(View A) {
+        selection=1;
         oAdapter = new ObjectAdapter(active);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rView.setLayoutManager(mLayoutManager);
@@ -136,6 +187,7 @@ public class ListScreen extends AppCompatActivity {
     }
 
     public void showFinsihed(View A) {
+        selection=2;
         oAdapter = new ObjectAdapter(finished);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rView.setLayoutManager(mLayoutManager);
@@ -145,6 +197,7 @@ public class ListScreen extends AppCompatActivity {
     }
 
     public void showNopm(View A) {
+        selection=3;
         oAdapter = new ObjectAdapter(nonpm);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rView.setLayoutManager(mLayoutManager);

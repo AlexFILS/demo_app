@@ -16,6 +16,8 @@ public class ObjectsMainList implements Serializable {
     private String type;
     private int state;
     private List<String> subelement;
+    //private static int total_number;
+    //private int creation_number;
 
 
     public String getWO() {
@@ -50,6 +52,10 @@ public class ObjectsMainList implements Serializable {
         this.state = state;
     }
 
+    //public int getCreation_number() {
+    //    return creation_number;
+   // }
+
     public List<String> getSubelement() {
         return subelement;
     }
@@ -65,6 +71,8 @@ public class ObjectsMainList implements Serializable {
         this.type = type;
         this.state = state;
         this.subelement = subelement;
+     //   creation_number=total_number;
+      //  total_number+=1;
     }
 
     public ObjectsMainList(){
