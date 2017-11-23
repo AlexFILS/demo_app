@@ -1,11 +1,13 @@
 package com.example.coco.demoapp.Activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         store_users(users_already_stored);
         //next, the users are created using the data stored inside the sharedprefrences
         createUsers();
+
     }
 
     public void peekPassword(View cbox){
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             if (!match) {
-                txtAlert.setText("Invalid username and/or passowrd.");
+                txtAlert.setText("Invalid username and/or password.");
                 txtAlert.setVisibility(View.VISIBLE);
             }
         }
@@ -155,4 +158,10 @@ public class MainActivity extends AppCompatActivity {
         cboxRemember.setChecked(false);
     }
     }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
 }

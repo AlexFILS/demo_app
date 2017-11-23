@@ -9,6 +9,9 @@
     <dimen name="tvChildLayHeight">38dp</dimen>
     <dimen name="woTextSize">16sp</dimen>
     <dimen name="rdescriptionWidth">368sp</dimen>
-    <dimen name="row_padding_vertical">10dp</dimen>
-    <dimen name="row_padding_vertical">10dp</dimen>
+    <dimen name="txtPwdMarginBtm">69dp</dimen>
+    <dimen name="txtUsrMarginLeft">67dp</dimen>
+    <dimen name="txtUsrMarginStart">67dp</dimen>
+    <dimen name="txtUsrMarginTop">146dp</dimen>
+
 </resources>

@@ -8,8 +8,10 @@
 
 
     <RelativeLayout
+        android:id="@+id/loginScreenRelativeLAy"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:onClick="hideKeyboard"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="16dp">
 
@@ -21,7 +23,7 @@
             android:layout_alignBottom="@+id/cboxPick"
             android:layout_alignLeft="@+id/txtUserName"
             android:layout_alignStart="@+id/txtUserName"
-            android:layout_marginBottom="69dp"
+            android:layout_marginBottom="@dimen/txtPwdMarginBtm"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
@@ -35,12 +37,13 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="67dp"
-            android:layout_marginStart="67dp"
-            android:layout_marginTop="146dp"
+            android:layout_marginLeft="@dimen/txtUsrMarginLeft"
+            android:layout_marginStart="@dimen/txtUsrMarginStart"
+            android:layout_marginTop="@dimen/txtUsrMarginTop"
             android:ems="10"
             android:hint="Username"
             android:inputType="textPersonName"
+            android:selectAllOnFocus="false"
             tools:layout_editor_absoluteX="85dp"
             tools:layout_editor_absoluteY="113dp" />
 
