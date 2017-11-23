@@ -12,16 +12,16 @@
         <TextView
             android:id="@+id/tvChild"
             android:layout_width="fill_parent"
-            android:layout_height="38dp"
-            android:textColor="#800080"
-            android:textSize="17dip" />
+            android:layout_height="@dimen/tvChildLayHeight"
+            android:textColor="@color/childColor"
+            android:textSize="@dimen/tvChildTxtSize" />
 
         <TextView
             android:id="@+id/txtDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:text="TextView" />
+            android:text="@string/tvChildText" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

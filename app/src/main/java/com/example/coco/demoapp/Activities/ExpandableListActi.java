@@ -80,7 +80,7 @@ public class ExpandableListActi extends AppCompatActivity {
         list2 = new ArrayList<>();
 
         ExpandListGroup gru3= new ExpandListGroup();
-        gru3.setName("Object info");
+        gru3.setName("Timeline");
         ExpandListChild ch3_1 = new ExpandListChild();
         ch3_1.setName("Somenradomdetail: ");
         ch3_1.setTagg(toDosplay.returnSpecificItem(3));
