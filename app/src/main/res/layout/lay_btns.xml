@@ -1,48 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnActive"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/btnFinished"
-            android:layout_toLeftOf="@+id/btnFinished"
-            android:layout_toStartOf="@+id/btnFinished"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+
             android:onClick="showActive"
             android:text="@string/btnActive" />
 
         <Button
             android:id="@+id/btnFinished"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+
+            android:layout_height="match_parent"
+
             android:onClick="showFinsihed"
             android:text="@string/btnFinished" />
 
-        <Button
-            android:id="@+id/btnActivenonpm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_toEndOf="@+id/btnFinished"
-            android:layout_toRightOf="@+id/btnFinished"
-            android:onClick="showNopm"
-            android:text="@string/btnNoPM"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="536dp" />
-    </RelativeLayout>
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/btnActivenonpm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+        android:onClick="showNopm"
+        android:text="@string/btnNoPM" />
+</LinearLayout>

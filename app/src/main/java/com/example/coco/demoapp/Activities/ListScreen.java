@@ -184,6 +184,7 @@ public class ListScreen extends AppCompatActivity {
         rView.setItemAnimator(new DefaultItemAnimator());
         rView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         rView.setAdapter(oAdapter);
+
     }
 
     public void showFinsihed(View A) {
@@ -194,6 +195,7 @@ public class ListScreen extends AppCompatActivity {
         rView.setItemAnimator(new DefaultItemAnimator());
         rView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         rView.setAdapter(oAdapter);
+        //Toast.makeText(getApplicationContext(), "Pressed "+ btnFnished.getText().toString(), Toast.LENGTH_LONG).show();
     }
 
     public void showNopm(View A) {
@@ -204,6 +206,7 @@ public class ListScreen extends AppCompatActivity {
         rView.setItemAnimator(new DefaultItemAnimator());
         rView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         rView.setAdapter(oAdapter);
+      //  Toast.makeText(getApplicationContext(), "Pressed "+ btnNonPM.getText().toString(), Toast.LENGTH_LONG).show();
     }
 
     public List<ObjectsMainList> listReturn (List<ObjectsMainList> inputList){

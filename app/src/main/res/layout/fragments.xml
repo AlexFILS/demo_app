@@ -16,9 +16,8 @@
             android:layout_width="fill_parent"
             android:layout_height="130px"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            tools:layout="@layout/lay_btns"/>
+            tools:layout="@layout/lay_btns" />
 
         <fragment
             android:id="@+id/fragment2"

@@ -1,11 +1,9 @@
 package com.example.coco.demoapp.A_LoginScreenTest;
-import android.support.test.espresso.intent.Intents;
-import android.support.test.espresso.intent.rule.IntentsTestRule;
+
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.text.InputType;
-import android.view.View;
-import android.widget.CheckBox;
+
 
 import com.example.coco.demoapp.Activities.ListScreen;
 import com.example.coco.demoapp.Activities.MainActivity;
@@ -21,20 +19,18 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.replaceText;
-import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.intent.Intents.init;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.Intents.release;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
-import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
+
 import static android.support.test.espresso.matcher.ViewMatchers.isClickable;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.isFocusable;
-import static android.support.test.espresso.matcher.ViewMatchers.supportsInputMethods;
+
 import static android.support.test.espresso.matcher.ViewMatchers.withHint;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
+
 import static android.support.test.espresso.matcher.ViewMatchers.withInputType;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.IsNot.not;
@@ -51,7 +47,7 @@ import static org.hamcrest.core.IsNot.not;
 
         @Rule
         public ActivityTestRule<MainActivity> mActivityRule =
-                new ActivityTestRule<MainActivity>(MainActivity.class);
+                new ActivityTestRule<>(MainActivity.class);
 
 //
 //        //First of all, check if everything is present
@@ -175,6 +171,7 @@ import static org.hamcrest.core.IsNot.not;
 
         }
 
+
     @Test
     public void test_7loginOk(){
 
@@ -182,6 +179,7 @@ import static org.hamcrest.core.IsNot.not;
         onView(withId(R.id.txtUserName)).perform(clearText());
         onView(withId(R.id.txtUserName)).perform(replaceText("acc_gigel"));
         onView(withId(R.id.txtPassword)).perform(replaceText("parolagigel1"));
+
         init();
         onView(withId(R.id.btnLogin)).perform(click());
         intended(hasComponent(ListScreen.class.getName()));
