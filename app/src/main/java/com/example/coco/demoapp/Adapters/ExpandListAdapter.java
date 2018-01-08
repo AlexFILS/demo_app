@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import com.example.coco.demoapp.Model.WoOverview;
 import com.example.coco.demoapp.Objects.ExpandListChild;
 import com.example.coco.demoapp.Objects.ExpandListGroup;
 import com.example.coco.demoapp.R;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 public class ExpandListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private ArrayList<ExpandListGroup> groups;
+
     public ExpandListAdapter(Context context, ArrayList<ExpandListGroup> groups) {
         this.context = context;
         this.groups = groups;
@@ -34,6 +36,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         ch.add(item);
         groups.get(index).setItems(ch);
     }
+
     public Object getChild(int groupPosition, int childPosition) {
         // TODO Auto-generated method stub
         ArrayList<ExpandListChild> chList = groups.get(groupPosition).getItems();
@@ -91,7 +94,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             LayoutInflater inf = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             view = inf.inflate(R.layout.group_items, null);
         }
-        TextView tv =  view.findViewById(R.id.tvGroup);
+        TextView tv = view.findViewById(R.id.tvGroup);
         tv.setText(group.getName());
         // TODO Auto-generated method stub
         return view;

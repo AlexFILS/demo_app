@@ -16,31 +16,30 @@ import java.util.List;
  * Created by Coco on 15.11.2017.
  */
 
-public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.MyViewHolder>{
-List<ObjectsMainList> object_list=  new ArrayList<>();
+public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.MyViewHolder> {
+    List<ObjectsMainList> object_list = new ArrayList<>();
 
 
+    public ObjectAdapter(List objectList) {
+        this.object_list = objectList;
 
-public ObjectAdapter(List objectList){
-    this.object_list=objectList;
-
-}
+    }
 
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView= LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row,parent,false);
-    return new MyViewHolder(itemView);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row, parent, false);
+        return new MyViewHolder(itemView);
     }
 
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-    ObjectsMainList listObject= object_list.get(position);
-    holder.WO.setText(listObject.getWO());
-    holder.type.setText(listObject.getType());
-    holder.description.setText(listObject.getDescription());
+        ObjectsMainList listObject = object_list.get(position);
+        holder.WO.setText(listObject.getWO());
+        holder.type.setText(listObject.getType());
+        holder.description.setText(listObject.getDescription());
     }
 
     @Override
@@ -49,12 +48,13 @@ public ObjectAdapter(List objectList){
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-    private TextView WO,description,type;
+        private TextView WO, description, type;
+
         private MyViewHolder(View itemView) {
             super(itemView);
-            WO=itemView.findViewById(R.id.Wo);
-            type=itemView.findViewById(R.id.type);
-            description=itemView.findViewById(R.id.description);
+            WO = itemView.findViewById(R.id.Wo);
+            type = itemView.findViewById(R.id.type);
+            description = itemView.findViewById(R.id.description);
 
         }
 

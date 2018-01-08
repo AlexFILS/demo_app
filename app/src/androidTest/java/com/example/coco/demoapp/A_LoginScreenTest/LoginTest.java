@@ -41,44 +41,44 @@ import static org.hamcrest.core.IsNot.not;
  */
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-    @RunWith(AndroidJUnit4.class)
-    public class LoginTest {
+@RunWith(AndroidJUnit4.class)
+public class LoginTest {
 
 
-        @Rule
-        public ActivityTestRule<MainActivity> mActivityRule =
-                new ActivityTestRule<>(MainActivity.class);
+    @Rule
+    public ActivityTestRule<MainActivity> mActivityRule =
+            new ActivityTestRule<>(MainActivity.class);
 
-//
+    //
 //        //First of all, check if everything is present
-        @Test
-    public void test_1checkIfAllElementsAreDisplayed(){
-            onView(withId(R.id.txtPassword)).check(matches(isDisplayed()));
-            onView(withId(R.id.txtUserName)).check(matches(isDisplayed()));
-            onView(withId(R.id.btnLogin)).check(matches(isDisplayed()));
-            onView(withId(R.id.cboxPick)).check(matches(isDisplayed()));
-            onView(withId(R.id.cboxRemember)).check(matches(isDisplayed()));
-            onView(withId(R.id.txtAlert)).check(matches(not(isDisplayed())));
-        }
+    @Test
+    public void test_1checkIfAllElementsAreDisplayed() {
+        onView(withId(R.id.txtPassword)).check(matches(isDisplayed()));
+        onView(withId(R.id.txtUserName)).check(matches(isDisplayed()));
+        onView(withId(R.id.btnLogin)).check(matches(isDisplayed()));
+        onView(withId(R.id.cboxPick)).check(matches(isDisplayed()));
+        onView(withId(R.id.cboxRemember)).check(matches(isDisplayed()));
+        onView(withId(R.id.txtAlert)).check(matches(not(isDisplayed())));
+    }
 
-        @Test
-        public void test_2checkHints(){
-            onView(withId(R.id.txtPassword)).check(matches(withHint("Password")));
-            onView(withId(R.id.txtUserName)).check(matches(withHint("Username")));
+    @Test
+    public void test_2checkHints() {
+        onView(withId(R.id.txtPassword)).check(matches(withHint("Password")));
+        onView(withId(R.id.txtUserName)).check(matches(withHint("Username")));
 
-        }
+    }
 
-        @Test
-    public void test_3clickableItems(){
-            onView(withId(R.id.cboxRemember)).check(matches(isClickable()));
-            onView(withId(R.id.cboxPick)).check(matches(isClickable()));
-            onView(withId(R.id.btnLogin)).check(matches(isClickable()));
-            onView(withId(R.id.txtPassword)).check(matches(isClickable()));
-            onView(withId(R.id.txtUserName)).check(matches(isClickable()));
-        }
+    @Test
+    public void test_3clickableItems() {
+        onView(withId(R.id.cboxRemember)).check(matches(isClickable()));
+        onView(withId(R.id.cboxPick)).check(matches(isClickable()));
+        onView(withId(R.id.btnLogin)).check(matches(isClickable()));
+        onView(withId(R.id.txtPassword)).check(matches(isClickable()));
+        onView(withId(R.id.txtUserName)).check(matches(isClickable()));
+    }
 
-        @Test
-    public void test_4wrongCredentialsTest(){
+    @Test
+    public void test_4wrongCredentialsTest() {
 
         onView(withId(R.id.txtUserName)).perform(replaceText("gigel"));
         onView(withId(R.id.txtPassword)).perform(replaceText("sdfsd"));
@@ -89,91 +89,90 @@ import static org.hamcrest.core.IsNot.not;
         onView(withId(R.id.txtPassword)).perform(clearText());
         onView(withId(R.id.txtUserName)).perform(clearText());
 
-            onView(withId(R.id.txtUserName)).perform(replaceText("gggg"));
-            onView(withId(R.id.txtPassword)).perform(replaceText("gighhhel"));
-            onView(withId(R.id.btnLogin)).perform(click());
-            onView(withId(R.id.txtAlert)).check(matches(isDisplayed()));
-            onView(withId(R.id.txtAlert)).check(matches(withText("Invalid username and/or password.")));
+        onView(withId(R.id.txtUserName)).perform(replaceText("gggg"));
+        onView(withId(R.id.txtPassword)).perform(replaceText("gighhhel"));
+        onView(withId(R.id.btnLogin)).perform(click());
+        onView(withId(R.id.txtAlert)).check(matches(isDisplayed()));
+        onView(withId(R.id.txtAlert)).check(matches(withText("Invalid username and/or password.")));
 
-            onView(withId(R.id.txtPassword)).perform(clearText());
-            onView(withId(R.id.txtUserName)).perform(clearText());
+        onView(withId(R.id.txtPassword)).perform(clearText());
+        onView(withId(R.id.txtUserName)).perform(clearText());
 
-            onView(withId(R.id.txtUserName)).perform(replaceText("acc_gigel"));
-            onView(withId(R.id.txtPassword)).perform(replaceText("gshel"));
-            onView(withId(R.id.btnLogin)).perform(click());
-            onView(withId(R.id.txtAlert)).check(matches(isDisplayed()));
-            onView(withId(R.id.txtAlert)).check(matches(withText("Invalid username and/or password.")));
+        onView(withId(R.id.txtUserName)).perform(replaceText("acc_gigel"));
+        onView(withId(R.id.txtPassword)).perform(replaceText("gshel"));
+        onView(withId(R.id.btnLogin)).perform(click());
+        onView(withId(R.id.txtAlert)).check(matches(isDisplayed()));
+        onView(withId(R.id.txtAlert)).check(matches(withText("Invalid username and/or password.")));
 
-            onView(withId(R.id.txtPassword)).perform(clearText());
-            onView(withId(R.id.txtUserName)).perform(clearText());
+        onView(withId(R.id.txtPassword)).perform(clearText());
+        onView(withId(R.id.txtUserName)).perform(clearText());
 
-            onView(withId(R.id.txtUserName)).perform(replaceText("gigel"));
-            onView(withId(R.id.txtPassword)).perform(replaceText("parolagigel1"));
-            onView(withId(R.id.btnLogin)).perform(click());
-            onView(withId(R.id.txtAlert)).check(matches(isDisplayed()));
-            onView(withId(R.id.txtAlert)).check(matches(withText("Invalid username and/or password.")));
+        onView(withId(R.id.txtUserName)).perform(replaceText("gigel"));
+        onView(withId(R.id.txtPassword)).perform(replaceText("parolagigel1"));
+        onView(withId(R.id.btnLogin)).perform(click());
+        onView(withId(R.id.txtAlert)).check(matches(isDisplayed()));
+        onView(withId(R.id.txtAlert)).check(matches(withText("Invalid username and/or password.")));
 
-            onView(withId(R.id.txtPassword)).perform(clearText());
-            onView(withId(R.id.txtUserName)).perform(clearText());
+        onView(withId(R.id.txtPassword)).perform(clearText());
+        onView(withId(R.id.txtUserName)).perform(clearText());
 
-            onView(withId(R.id.txtUserName)).perform(replaceText("gigel"));
-            onView(withId(R.id.txtPassword)).perform(replaceText("gigel"));
-            onView(withId(R.id.btnLogin)).perform(click());
-            onView(withId(R.id.txtAlert)).check(matches(isDisplayed()));
-            onView(withId(R.id.txtAlert)).check(matches(withText("Invalid username and/or password.")));
+        onView(withId(R.id.txtUserName)).perform(replaceText("gigel"));
+        onView(withId(R.id.txtPassword)).perform(replaceText("gigel"));
+        onView(withId(R.id.btnLogin)).perform(click());
+        onView(withId(R.id.txtAlert)).check(matches(isDisplayed()));
+        onView(withId(R.id.txtAlert)).check(matches(withText("Invalid username and/or password.")));
 
-            onView(withId(R.id.txtPassword)).perform(clearText());
-            onView(withId(R.id.txtUserName)).perform(clearText());
+        onView(withId(R.id.txtPassword)).perform(clearText());
+        onView(withId(R.id.txtUserName)).perform(clearText());
 
-            onView(withId(R.id.txtUserName)).perform(replaceText("acc_gigel"));
-            onView(withId(R.id.txtPassword)).perform(replaceText("parolagigel2"));
-            onView(withId(R.id.btnLogin)).perform(click());
-            onView(withId(R.id.txtAlert)).check(matches(isDisplayed()));
-            onView(withId(R.id.txtAlert)).check(matches(withText("Invalid username and/or password.")));
-
-
-        }
-
-            @Test
-        public void test_5checkPeekPasswordFunctionality(){
-            onView(withId(R.id.txtPassword)).perform(clearText());
-            onView(withId(R.id.txtUserName)).perform(clearText());
-            onView(withId(R.id.txtUserName)).perform(replaceText("acc_gigel"));
-            onView(withId(R.id.txtPassword)).perform(replaceText("parolagigel2"));
-
-           // onView(withId(R.id.cboxPick)).check(matches(isChecked())).perform(scrollTo(),click());
-        for(int i=0;i<20;i++){
+        onView(withId(R.id.txtUserName)).perform(replaceText("acc_gigel"));
+        onView(withId(R.id.txtPassword)).perform(replaceText("parolagigel2"));
+        onView(withId(R.id.btnLogin)).perform(click());
+        onView(withId(R.id.txtAlert)).check(matches(isDisplayed()));
+        onView(withId(R.id.txtAlert)).check(matches(withText("Invalid username and/or password.")));
 
 
-        if(i%2!=0) {
-            onView(withId(R.id.cboxPick)).perform(click());
-            onView(withId(R.id.txtPassword)).check(matches(withInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)));
-        }
-        else{
-            onView(withId(R.id.cboxPick)).perform(click());
-            onView(withId(R.id.txtPassword)).check(matches(withInputType(InputType.TYPE_CLASS_TEXT)));
-        }
+    }
 
-        }
+    @Test
+    public void test_5checkPeekPasswordFunctionality() {
+        onView(withId(R.id.txtPassword)).perform(clearText());
+        onView(withId(R.id.txtUserName)).perform(clearText());
+        onView(withId(R.id.txtUserName)).perform(replaceText("acc_gigel"));
+        onView(withId(R.id.txtPassword)).perform(replaceText("parolagigel2"));
 
-        }
+        // onView(withId(R.id.cboxPick)).check(matches(isChecked())).perform(scrollTo(),click());
+        for (int i = 0; i < 20; i++) {
 
-        @Test
-    public void test_6testNoInput(){
-            onView(withId(R.id.txtPassword)).perform(clearText());
-            onView(withId(R.id.txtUserName)).perform(clearText());
 
-            for(int i=0;i<15;i++){
-                onView(withId(R.id.btnLogin)).perform(click());
-                onView(withId(R.id.txtAlert)).check(matches(withText("There are empty fields! ")));
+            if (i % 2 != 0) {
+                onView(withId(R.id.cboxPick)).perform(click());
+                onView(withId(R.id.txtPassword)).check(matches(withInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)));
+            } else {
+                onView(withId(R.id.cboxPick)).perform(click());
+                onView(withId(R.id.txtPassword)).check(matches(withInputType(InputType.TYPE_CLASS_TEXT)));
             }
 
-
         }
+
+    }
+
+    @Test
+    public void test_6testNoInput() {
+        onView(withId(R.id.txtPassword)).perform(clearText());
+        onView(withId(R.id.txtUserName)).perform(clearText());
+
+        for (int i = 0; i < 15; i++) {
+            onView(withId(R.id.btnLogin)).perform(click());
+            onView(withId(R.id.txtAlert)).check(matches(withText("There are empty fields! ")));
+        }
+
+
+    }
 
 
     @Test
-    public void test_7loginOk(){
+    public void test_7loginOk() {
 
         onView(withId(R.id.txtPassword)).perform(clearText());
         onView(withId(R.id.txtUserName)).perform(clearText());
@@ -188,4 +187,4 @@ import static org.hamcrest.core.IsNot.not;
     }
 
 
-    }
+}

@@ -12,12 +12,15 @@ public class ExpandListChild {
     public String getName() {
         return Name;
     }
+
     public void setName(String Name) {
         this.Name = Name;
     }
+
     public String getTagg() {
         return Tag;
     }
+
     public void setTagg(String Tag) {
         this.Tag = Tag;
     }

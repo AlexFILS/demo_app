@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class ObjectSubelement implements Serializable {
     private String name;
-    private Map<String,List<String>> elements;
+    private Map<String, List<String>> elements;
 
     public void setName(String name) {
         this.name = name;
@@ -28,7 +28,7 @@ public class ObjectSubelement implements Serializable {
         this.elements = elements;
     }
 
-    public ObjectSubelement(){
+    public ObjectSubelement() {
 
     }
 

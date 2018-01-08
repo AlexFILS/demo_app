@@ -54,32 +54,33 @@ public class ObjectsMainList implements Serializable {
 
     //public int getCreation_number() {
     //    return creation_number;
-   // }
+    // }
 
     public List<String> getSubelement() {
         return subelement;
     }
 
- public void setSubelement(List<String>  subelement) {
+    public void setSubelement(List<String> subelement) {
         this.subelement = subelement;
     }
 
-    public ObjectsMainList(String WO, String description, String type, int state,List<String> subelement) {
+    public ObjectsMainList(String WO, String description, String type, int state, List<String> subelement) {
 
         this.WO = WO;
         this.description = description;
         this.type = type;
         this.state = state;
         this.subelement = subelement;
-     //   creation_number=total_number;
-      //  total_number+=1;
+        //   creation_number=total_number;
+        //  total_number+=1;
     }
 
-    public ObjectsMainList(){
+    public ObjectsMainList() {
 
     }
-public String returnSpecificItem( int index){
-    return subelement.get(index).toString();
-}
+
+    public String returnSpecificItem(int index) {
+        return subelement.get(index).toString();
+    }
 
 }
