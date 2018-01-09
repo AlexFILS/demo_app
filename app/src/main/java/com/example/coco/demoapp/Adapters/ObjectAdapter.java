@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.coco.demoapp.Model.WoOverview;
 import com.example.coco.demoapp.Objects.ObjectsMainList;
 import com.example.coco.demoapp.R;
 
@@ -17,7 +18,7 @@ import java.util.List;
  */
 
 public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.MyViewHolder> {
-    List<ObjectsMainList> object_list = new ArrayList<>();
+    List<WoOverview> object_list = new ArrayList<>();
 
 
     public ObjectAdapter(List objectList) {
@@ -36,9 +37,9 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.MyViewHold
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        ObjectsMainList listObject = object_list.get(position);
-        holder.WO.setText(listObject.getWO());
-        holder.type.setText(listObject.getType());
+        WoOverview listObject = object_list.get(position);
+        holder.WO.setText(listObject.get_id());
+        holder.type.setText(listObject.getStatus());
         holder.description.setText(listObject.getDescription());
     }
 

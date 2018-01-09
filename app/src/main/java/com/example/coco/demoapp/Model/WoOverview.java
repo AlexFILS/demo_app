@@ -8,26 +8,70 @@ import com.couchbase.lite.Mapper;
 import com.couchbase.lite.Query;
 import com.couchbase.lite.View;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by alexandrumihai1 on 04/01/2018.
  */
 
-public class WoOverview {
+public class WoOverview implements Serializable{
     private String _id;
     private String type;
     private String _rev;
     private String description;
     private String status;
-
-
+    @JsonProperty("materials")
+    private List<Object> materials = new ArrayList<Object>();
+    @JsonProperty("ob_info")
+    private List<Object> ob_info = new ArrayList<Object>();
+    @JsonProperty("wo_info")
+    private List<Object> wo_info = new ArrayList<Object>();
+    @JsonProperty("timeframe")
+    private List<Object> timeframe = new ArrayList<Object>();
 
     @JsonIgnore
     private String Name;
     @JsonIgnore
     private String Tag;
+
+
+    public List<Object> getMaterials() {
+        return materials;
+    }
+    @JsonProperty("materials")
+    public void setMaterials(List<Object> materials) {
+        this.materials = materials;
+    }
+
+    public List<Object> getObject_info() {
+        return ob_info;
+    }
+    @JsonProperty("object_info")
+    public void setObject_info(List<Object> object_info) {
+        this.ob_info = object_info;
+    }
+
+    public List<Object> getWo_info() {
+        return wo_info;
+    }
+
+    @JsonProperty("wo_info")
+    public void setWo_info(List<Object> wo_info) {
+        this.wo_info = wo_info;
+    }
+
+    public List<Object> getTimeframe() {
+        return timeframe;
+    }
+    @JsonProperty("timeframe")
+    public void setTimeframe(List<Object> timeframe) {
+        this.timeframe = timeframe;
+    }
 
     public String getStatus() {
         return status;

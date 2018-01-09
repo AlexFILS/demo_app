@@ -24,7 +24,7 @@ public class ExpandableListActi extends AppCompatActivity {
         private ExpandListAdapter ExpAdapter;
         private ArrayList<ExpandListGroup> ExpListItems;
         private ExpandableListView ExpandList;
-        static ObjectsMainList toDosplay;
+        static WoOverview toDosplay;
         private List<WoOverview> mappedDocuments=new ArrayList<>();
         @Override
         public void onCreate (Bundle savedInstanceState){
@@ -33,7 +33,7 @@ public class ExpandableListActi extends AppCompatActivity {
             Intent i = getIntent();
 
 
-            toDosplay = (ObjectsMainList) i.getExtras().getSerializable("Send");
+            toDosplay = (WoOverview) i.getExtras().getSerializable("Send");
 
             ExpandList = findViewById(R.id.ExpList);
             ExpListItems = SetStandardGroups();
@@ -43,8 +43,6 @@ public class ExpandableListActi extends AppCompatActivity {
 
             DataManager manager = DataManager.getSharedInstance(getApplicationContext());
 
-            //  manager.getDocumentsByField("type");
-            // Log.d("CouchBase Database",    manager.retrieveDocument("234243324").toString());
 
             mappedDocuments = manager.mapDocument("type");
 
@@ -66,15 +64,15 @@ public class ExpandableListActi extends AppCompatActivity {
             gru1.setName("WO Info");
             ExpandListChild ch1_1 = new ExpandListChild();
             ch1_1.setName("Directive: ");
-            ch1_1.setTagg(toDosplay.returnSpecificItem(0));
+            ch1_1.setTagg(toDosplay.getWo_info().get(0).toString());
             list2.add(ch1_1);
             ExpandListChild ch1_2 = new ExpandListChild();
             ch1_2.setName("Work Type: ");
-            ch1_2.setTagg(toDosplay.returnSpecificItem(1));
+            ch1_2.setTagg(toDosplay.getWo_info().get(1).toString());
             list2.add(ch1_2);
             ExpandListChild ch1_3 = new ExpandListChild();
             ch1_3.setName("Fault description: ");
-            ch1_3.setTagg(toDosplay.returnSpecificItem(2));
+            ch1_3.setTagg(toDosplay.getWo_info().get(2).toString());
             list2.add(ch1_3);
             gru1.setItems(list2);
             list2 = new ArrayList<>();
@@ -84,11 +82,11 @@ public class ExpandableListActi extends AppCompatActivity {
             gru2.setName("Object Info");
             ExpandListChild ch2_1 = new ExpandListChild();
             ch2_1.setName("Start date:  ");
-            ch2_1.setTagg(toDosplay.returnSpecificItem(4));
+            ch2_1.setTagg(toDosplay.getObject_info().get(0).toString());
             list2.add(ch2_1);
             ExpandListChild ch2_2 = new ExpandListChild();
             ch2_2.setName("Start date:  ");
-            ch2_2.setTagg(toDosplay.returnSpecificItem(5));
+            ch2_2.setTagg(toDosplay.getObject_info().get(1).toString());
             list2.add(ch2_2);
             gru2.setItems(list2);
             list2 = new ArrayList<>();
@@ -96,24 +94,30 @@ public class ExpandableListActi extends AppCompatActivity {
             ExpandListGroup gru3 = new ExpandListGroup();
             gru3.setName("Timeline");
             ExpandListChild ch3_1 = new ExpandListChild();
-            ch3_1.setName("Somenradomdetail: ");
-            ch3_1.setTagg(toDosplay.returnSpecificItem(3));
+            ch3_1.setName("Start date: ");
+            ch3_1.setTagg(toDosplay.getTimeframe().get(0).toString());
             list2.add(ch3_1);
+            ExpandListChild ch3_2 = new ExpandListChild();
+            ch3_2.setName("End date");
+            ch3_2.setTagg(toDosplay.getTimeframe().get(1).toString());
+            list2.add(ch3_2);
             gru3.setItems(list2);
             list2 = new ArrayList<>();
 
 
             ExpandListGroup gru4 = new ExpandListGroup();
             gru4.setName("Materials");
-            ExpandListChild ch4_1 = new ExpandListChild();
-            ch4_1.setName("Material 1:  ");
-            ch4_1.setTagg(toDosplay.returnSpecificItem(6));
-            list2.add(ch4_1);
-            ExpandListChild ch4_2 = new ExpandListChild();
-            ch4_2.setName("Material 2:  ");
-            ch4_2.setTagg(toDosplay.returnSpecificItem(7));
-            list2.add(ch4_2);
+            int object_count =0;
+        for( Object s : toDosplay.getMaterials()){
+
+           ExpandListChild ch = new ExpandListChild();
+           ch.setName("Material " + (object_count+1));
+           ch.setTagg(toDosplay.getMaterials().get(object_count).toString());
+           object_count++;
+           list2.add(ch);
+        }
             gru4.setItems(list2);
+            
 
             list.add(gru1);
             list.add(gru2);
