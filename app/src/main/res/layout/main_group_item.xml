@@ -14,13 +14,14 @@
             android:layout_width="fill_parent"
             android:layout_height="@dimen/tvChildLayHeight"
             android:textColor="@color/childColor"
+            android:paddingLeft="25dp"
             android:textSize="@dimen/tvChildTxtSize" />
 
         <TextView
             android:id="@+id/txtDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:paddingLeft="50dp"
             android:text="@string/tvChildText" />
 
     </LinearLayout>

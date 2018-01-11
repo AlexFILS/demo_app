@@ -1,0 +1,51 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.example.coco.demoapp.control_fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:id="@+id/lay_frag_upper"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <Button
+            android:id="@+id/btnAddCar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="Add Car" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="11dp"
+            android:layout_toEndOf="@+id/btnAddCar"
+            android:background="@drawable/list" />
+
+        <EditText
+            android:id="@+id/txtRegSrc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/spinner2"
+            android:layout_toEndOf="@+id/spinner2"
+            android:layout_toStartOf="@+id/btnSearch"
+            android:ems="10"
+            android:hint="Reg Nr."
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/spinner2"
+            android:layout_alignParentEnd="true"
+            android:text="Search" />
+    </RelativeLayout>
+</FrameLayout>

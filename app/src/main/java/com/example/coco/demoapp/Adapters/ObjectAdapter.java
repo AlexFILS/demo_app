@@ -1,5 +1,6 @@
 package com.example.coco.demoapp.Adapters;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,21 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.MyViewHold
         holder.WO.setText(listObject.get_id());
         holder.type.setText(listObject.getStatus());
         holder.description.setText(listObject.getDescription());
+        holder.price.setText(listObject.getPrice()+"USD");
+
+        switch(listObject.getStatus()){
+            case "active":
+                holder.itemView.setBackgroundColor(Color.parseColor("#EC5766"));
+                break;
+
+            case "in progress":
+                holder.itemView.setBackgroundColor(Color.parseColor("#FFC857"));
+                break;
+            case "not started":
+                holder.itemView.setBackgroundColor(Color.parseColor("#63ADF2"));
+                break;
+        }
+
     }
 
     @Override
@@ -49,13 +65,14 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView WO, description, type;
+        private TextView WO, description, type, price;
 
         private MyViewHolder(View itemView) {
             super(itemView);
             WO = itemView.findViewById(R.id.Wo);
             type = itemView.findViewById(R.id.type);
             description = itemView.findViewById(R.id.description);
+            price = itemView.findViewById(R.id.txtPrice);
 
         }
 

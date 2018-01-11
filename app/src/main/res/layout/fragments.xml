@@ -2,9 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.coco.demoapp.Fragments.BottomButtons">
+   >
 
-    <!-- TODO: Update blank fragment layout -->
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,14 +20,35 @@
             android:layout_alignParentStart="true"
             tools:layout="@layout/lay_btns" />
 
-        <fragment
-            android:id="@+id/fragment2"
-            android:name="com.example.coco.demoapp.Fragments.ListClass"
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:layout_above="@+id/fragBtns"
+            android:layout_alignParentStart="true">
+
+            <fragment
+                android:id="@+id/fragment2"
+
+                android:name="com.example.coco.demoapp.Fragments.ListClass"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="58dp"
+                tools:layout="@layout/lay_list" />
+        </RelativeLayout>
+        <fragment
+            android:id="@+id/fragment"
+            android:name="com.example.coco.demoapp.Fragments.control"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
             android:layout_alignParentStart="true"
-            tools:layout="@layout/lay_list" />
+            android:layout_alignParentTop="true"
+            android:layout="@layout/fragment_control"
+            tools:layout="@layout/fragment_control" />
+
+
+
     </RelativeLayout>
 
 </FrameLayout>

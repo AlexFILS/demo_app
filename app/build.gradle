@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
+
 android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.coco.demoapp"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -21,6 +22,11 @@ android {
         exclude 'META-INF/ASL2.0'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -61,3 +67,6 @@ repositories {
         url "http://files.couchbase.com/maven2/"
     }
 }
+
+
+apply plugin: 'kotlin-android-extensions'

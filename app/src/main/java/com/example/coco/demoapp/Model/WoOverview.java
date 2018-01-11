@@ -21,6 +21,7 @@ import java.util.Map;
 
 public class WoOverview implements Serializable{
     private String _id;
+    private String price;
     private String type;
     private String _rev;
     private String description;
@@ -137,20 +138,16 @@ public class WoOverview implements Serializable{
 
         if (view.getMap() == null) {
 
-            view.setMap(new Mapper() {
-                @Override
-
-                public void map(Map<String, Object> document, Emitter emitter) {
-                    try {
-                        if (document.containsKey("type")) {
-                            Log.e("found", " found document " + document.get("type"));
-                            emitter.emit(document.get("_id"), null);
-                        }
-                    } catch(Exception e) {
-                        e.printStackTrace();
+            view.setMap((document, emitter) -> {
+                try {
+                    if (document.containsKey("type")) {
+                        Log.e("found", " found document " + document.get("type"));
+                        emitter.emit(document.get("_id"), null);
                     }
-
+                } catch(Exception e) {
+                    e.printStackTrace();
                 }
+
             }, "1");
         }
         Query query = view.createQuery();
@@ -163,20 +160,16 @@ public class WoOverview implements Serializable{
 
         if (view.getMap() == null) {
 
-            view.setMap(new Mapper() {
-                @Override
-
-                public void map(Map<String, Object> document, Emitter emitter) {
-                    try {
-                        if (document.containsKey(field)) {
-                            Log.d("CouchBase Database", " found document with type:" + document.get("type") + " and ID " + document.get("_id"));
-                            emitter.emit(document.get("_id"), null);
-                        }
-                    } catch(Exception e) {
-                        e.printStackTrace();
+            view.setMap((document, emitter) -> {
+                try {
+                    if (document.containsKey(field)) {
+                        Log.d("CouchBase Database", " found document with type:" + document.get("type") + " and ID " + document.get("_id"));
+                        emitter.emit(document.get("_id"), null);
                     }
-
+                } catch(Exception e) {
+                    e.printStackTrace();
                 }
+
             }, "2");
         }
         Query query = view.createQuery();
@@ -198,5 +191,14 @@ public class WoOverview implements Serializable{
 
     public void setTagg(String Tag) {
         this.Tag = Tag;
+    }
+
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }

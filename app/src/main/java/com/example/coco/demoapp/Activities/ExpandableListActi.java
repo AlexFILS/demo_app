@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ExpandableListView;
 
 import com.example.coco.demoapp.Adapters.ExpandListAdapter;
@@ -29,6 +31,9 @@ public class ExpandableListActi extends AppCompatActivity {
         @Override
         public void onCreate (Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
             setContentView(R.layout.activity_expandable_list);
             Intent i = getIntent();
 
@@ -63,7 +68,7 @@ public class ExpandableListActi extends AppCompatActivity {
 
             gru1.setName("WO Info");
             ExpandListChild ch1_1 = new ExpandListChild();
-            ch1_1.setName("Directive: ");
+            ch1_1.setName("Damage info: ");
             ch1_1.setTagg(toDosplay.getWo_info().get(0).toString());
             list2.add(ch1_1);
             ExpandListChild ch1_2 = new ExpandListChild();
@@ -81,24 +86,28 @@ public class ExpandableListActi extends AppCompatActivity {
             ExpandListGroup gru2 = new ExpandListGroup();
             gru2.setName("Object Info");
             ExpandListChild ch2_1 = new ExpandListChild();
-            ch2_1.setName("Start date:  ");
+            ch2_1.setName("Make:  ");
             ch2_1.setTagg(toDosplay.getObject_info().get(0).toString());
             list2.add(ch2_1);
             ExpandListChild ch2_2 = new ExpandListChild();
-            ch2_2.setName("Start date:  ");
+            ch2_2.setName("Model  ");
             ch2_2.setTagg(toDosplay.getObject_info().get(1).toString());
             list2.add(ch2_2);
+            ExpandListChild ch2_3 = new ExpandListChild();
+            ch2_3.setName("VIN Number");
+            ch2_3.setTagg(toDosplay.getObject_info().get(2).toString());
+            list2.add(ch2_3);
             gru2.setItems(list2);
             list2 = new ArrayList<>();
 
             ExpandListGroup gru3 = new ExpandListGroup();
             gru3.setName("Timeline");
             ExpandListChild ch3_1 = new ExpandListChild();
-            ch3_1.setName("Start date: ");
+            ch3_1.setName("Work starting: ");
             ch3_1.setTagg(toDosplay.getTimeframe().get(0).toString());
             list2.add(ch3_1);
             ExpandListChild ch3_2 = new ExpandListChild();
-            ch3_2.setName("End date");
+            ch3_2.setName("Finish date (estimate)");
             ch3_2.setTagg(toDosplay.getTimeframe().get(1).toString());
             list2.add(ch3_2);
             gru3.setItems(list2);
@@ -117,7 +126,7 @@ public class ExpandableListActi extends AppCompatActivity {
            list2.add(ch);
         }
             gru4.setItems(list2);
-            
+
 
             list.add(gru1);
             list.add(gru2);
