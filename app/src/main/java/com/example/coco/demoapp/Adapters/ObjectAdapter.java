@@ -45,16 +45,18 @@ public class ObjectAdapter extends RecyclerView.Adapter<ObjectAdapter.MyViewHold
         holder.price.setText(listObject.getPrice()+"USD");
 
         switch(listObject.getStatus()){
-            case "active":
+            case "repaired":
                 holder.itemView.setBackgroundColor(Color.parseColor("#EC5766"));
                 break;
-
             case "in progress":
                 holder.itemView.setBackgroundColor(Color.parseColor("#FFC857"));
                 break;
             case "not started":
                 holder.itemView.setBackgroundColor(Color.parseColor("#63ADF2"));
                 break;
+            default:
+                holder.itemView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
         }
 
     }

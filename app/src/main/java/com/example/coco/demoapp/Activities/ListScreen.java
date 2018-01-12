@@ -1,6 +1,8 @@
 package com.example.coco.demoapp.Activities;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -51,22 +53,22 @@ public class ListScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.fragments);
-        rView = findViewById(R.id.recycle_view);
+        super.onCreate( savedInstanceState );
+        requestWindowFeature( Window.FEATURE_NO_TITLE );
+        getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN );
+        setContentView( R.layout.fragments );
+        rView = findViewById( R.id.recycle_view );
         selection = 0;
-        objects = DataManager.getSharedInstance(getApplicationContext()).mapDocOfSpecificType("type", "wo");
-        oAdapter = new ObjectAdapter(objects);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        rView.setLayoutManager(mLayoutManager);
-        rView.setItemAnimator(new DefaultItemAnimator());
-        rView.addItemDecoration(new DividerItemDecoration(this, VERTICAL));
-        rView.setAdapter(oAdapter);
+        objects = DataManager.getSharedInstance( getApplicationContext() ).mapDocOfSpecificType( "type", "wo" );
+        oAdapter = new ObjectAdapter( objects );
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager( getApplicationContext() );
+        rView.setLayoutManager( mLayoutManager );
+        rView.setItemAnimator( new DefaultItemAnimator() );
+        rView.addItemDecoration( new DividerItemDecoration( this, VERTICAL ) );
+        rView.setAdapter( oAdapter );
         rView.addOnItemTouchListener(
-                new RecyclerItemClickListener(this, rView, new RecyclerItemClickListener.OnItemClickListener() {
+                new RecyclerItemClickListener( this, rView, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
 
@@ -74,32 +76,32 @@ public class ListScreen extends AppCompatActivity {
 
                         switch (selection) {
                             case 0:
-                                toSend = objects.get(position);
+                                toSend = objects.get( position );
                                 break;
                             case 1:
-                                toSend = active.get(position);
+                                toSend = active.get( position );
                                 break;
                             case 2:
-                                toSend = finished.get(position);
+                                toSend = finished.get( position );
                                 break;
                             case 3:
-                                toSend = nonpm.get(position);
+                                toSend = nonpm.get( position );
                                 break;
                             case 4:
-                                toSend = searchedCar.get(position);
+                                toSend = searchedCar.get( position );
                             default:
                                 break;
                         }
                         //int number= objects.get(position).getCreation_number();
 
 
-                        Intent expandable = new Intent(ListScreen.this, ExpandableListActi.class);
-                        Toast.makeText(getApplicationContext(), "Pressed " + toSend.getID().toString(), Toast.LENGTH_LONG).show();
+                        Intent expandable = new Intent( ListScreen.this, ExpandableListActi.class );
+                        Toast.makeText( getApplicationContext(), "Pressed " + toSend.getID().toString(), Toast.LENGTH_LONG ).show();
 
-                        expandable.putExtra("Send", toSend);
+                        expandable.putExtra( "Send", toSend );
 
 
-                        startActivity(expandable);
+                        startActivity( expandable );
 
                     }
 
@@ -107,86 +109,96 @@ public class ListScreen extends AppCompatActivity {
                     public void onLongItemClick(View view, int position) {
 
                     }
-                }));
+                } ) );
         prepareData();
-        populateLists(DataManager.getSharedInstance(getApplicationContext()).mapDocOfSpecificType("type", "wo"));
+        populateLists( DataManager.getSharedInstance( getApplicationContext() ).mapDocOfSpecificType( "type", "wo" ) );
         oAdapter.notifyDataSetChanged();
-        btnActive = findViewById(R.id.btnActive);
-        btnFnished = findViewById(R.id.btnFinished);
-        search = findViewById(R.id.btnSearch);
-        txtSearch = findViewById(R.id.txtRegSrc);
-        btnNonPM = findViewById(R.id.btnActivenonpm);
-        btnNonPM.setText("NonPM(" + nonpm.size() + ")");
-        btnActive.setText("Active(" + active.size() + ")");
-        btnFnished.setText("Finished(" + finished.size() + ")");
-        newCar = findViewById(R.id.btnAddCar);
+        btnActive = findViewById( R.id.btnActive );
+        btnFnished = findViewById( R.id.btnFinished );
+        search = findViewById( R.id.btnSearch );
+        txtSearch = findViewById( R.id.txtRegSrc );
+        btnNonPM = findViewById( R.id.btnActivenonpm );
+        btnNonPM.setText( "NonPM(" + nonpm.size() + ")" );
+        btnActive.setText( "Active(" + active.size() + ")" );
+        btnFnished.setText( "Finished(" + finished.size() + ")" );
+        newCar = findViewById( R.id.btnAddCar );
+        SwipeRefreshLayout swipeLayout = findViewById( R.id.swipeLAy );
 
-        btnActive.setOnClickListener(view -> {
+        swipeLayout.setOnRefreshListener( () -> new Handler().postDelayed( () -> {
+
+            objects = DataManager.getSharedInstance( getApplicationContext() ).mapDocOfSpecificType( "type", "wo" );
+            oAdapter = new ObjectAdapter( objects );
+            rView.setAdapter( oAdapter);
+            selection=0;
+            swipeLayout.setRefreshing(false); },2000 ));
+        swipeLayout.setRefreshing(false);
+
+        btnActive.setOnClickListener( view -> {
             selection = 1;
-            oAdapter = new ObjectAdapter(active);
-            RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(getApplicationContext());
-            rView.setLayoutManager(mLayoutManager1);
-            rView.setItemAnimator(new DefaultItemAnimator());
-            rView.addItemDecoration(new DividerItemDecoration(rView.getContext(), VERTICAL));
-            rView.setAdapter(oAdapter);
-        });
+            oAdapter = new ObjectAdapter( active );
+            RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager( getApplicationContext() );
+            rView.setLayoutManager( mLayoutManager1 );
+            rView.setItemAnimator( new DefaultItemAnimator() );
+            rView.addItemDecoration( new DividerItemDecoration( rView.getContext(), VERTICAL ) );
+            rView.setAdapter( oAdapter );
+        } );
 
-        btnFnished.setOnClickListener(view -> {
+        btnFnished.setOnClickListener( view -> {
             selection = 2;
-            oAdapter = new ObjectAdapter(finished);
-            RecyclerView.LayoutManager mLayoutManager12 = new LinearLayoutManager(getApplicationContext());
-            rView.setLayoutManager(mLayoutManager12);
-            rView.setItemAnimator(new DefaultItemAnimator());
-            rView.addItemDecoration(new DividerItemDecoration(rView.getContext(), VERTICAL));
-            rView.setAdapter(oAdapter);
-        });
+            oAdapter = new ObjectAdapter( finished );
+            RecyclerView.LayoutManager mLayoutManager12 = new LinearLayoutManager( getApplicationContext() );
+            rView.setLayoutManager( mLayoutManager12 );
+            rView.setItemAnimator( new DefaultItemAnimator() );
+            rView.addItemDecoration( new DividerItemDecoration( rView.getContext(), VERTICAL ) );
+            rView.setAdapter( oAdapter );
+        } );
 
-        btnNonPM.setOnClickListener(view -> {
+        btnNonPM.setOnClickListener( view -> {
             selection = 3;
-            oAdapter = new ObjectAdapter(nonpm);
-            RecyclerView.LayoutManager mLayoutManager13 = new LinearLayoutManager(getApplicationContext());
-            rView.setLayoutManager(mLayoutManager13);
-            rView.setItemAnimator(new DefaultItemAnimator());
-            rView.addItemDecoration(new DividerItemDecoration(rView.getContext(), VERTICAL));
-            rView.setAdapter(oAdapter);
-        });
+            oAdapter = new ObjectAdapter( nonpm );
+            RecyclerView.LayoutManager mLayoutManager13 = new LinearLayoutManager( getApplicationContext() );
+            rView.setLayoutManager( mLayoutManager13 );
+            rView.setItemAnimator( new DefaultItemAnimator() );
+            rView.addItemDecoration( new DividerItemDecoration( rView.getContext(), VERTICAL ) );
+            rView.setAdapter( oAdapter );
+        } );
 
-        newCar.setOnClickListener(view -> {
-            Intent newCarWindows = new Intent(getApplicationContext(), AddCar.class);
-            startActivity(newCarWindows);
+        newCar.setOnClickListener( view -> {
+            Intent newCarWindows = new Intent( getApplicationContext(), AddCar.class );
+            startActivity( newCarWindows );
 
-        });
-        Spinner spinner = findViewById(R.id.spinner2);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.sort_options, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        } );
+        Spinner spinner = findViewById( R.id.spinner2 );
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource( this,
+                R.array.sort_options, android.R.layout.simple_spinner_item );
+        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+        spinner.setAdapter( adapter );
+        spinner.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0: {
-                        objects.sort((WoOverview o1, WoOverview o2) -> o1.get_id().compareTo(o2.get_id()));
-                        oAdapter = new ObjectAdapter(objects);
-                        rView.setAdapter(oAdapter);
+                        objects.sort( (WoOverview o1, WoOverview o2) -> o1.get_id().compareTo( o2.get_id() ) );
+                        oAdapter = new ObjectAdapter( objects );
+                        rView.setAdapter( oAdapter );
                         break;
                     }
                     case 1: {
-                        objects.sort((WoOverview o1, WoOverview o2) -> o1.getDescription().compareTo(o2.getDescription()));
-                        oAdapter = new ObjectAdapter(objects);
-                        rView.setAdapter(oAdapter);
+                        objects.sort( (WoOverview o1, WoOverview o2) -> o1.getDescription().compareTo( o2.getDescription() ) );
+                        oAdapter = new ObjectAdapter( objects );
+                        rView.setAdapter( oAdapter );
                         break;
                     }
                     case 2: {
-                        objects.sort((WoOverview o1, WoOverview o2) -> o1.getStatus().compareTo(o2.getStatus()));
-                        oAdapter = new ObjectAdapter(objects);
-                        rView.setAdapter(oAdapter);
+                        objects.sort( (WoOverview o1, WoOverview o2) -> o1.getStatus().compareTo( o2.getStatus() ) );
+                        oAdapter = new ObjectAdapter( objects );
+                        rView.setAdapter( oAdapter );
                         break;
                     }
                     case 3: {
-                        objects.sort((o1, o2) -> Integer.signum(Integer.parseInt(o1.getPrice()) - Integer.parseInt(o2.getPrice())));
-                        oAdapter = new ObjectAdapter(objects);
-                        rView.setAdapter(oAdapter);
+                        objects.sort( (o1, o2) -> Integer.signum( Integer.parseInt( o1.getPrice() ) - Integer.parseInt( o2.getPrice() ) ) );
+                        oAdapter = new ObjectAdapter( objects );
+                        rView.setAdapter( oAdapter );
                         break;
                     }
                 }
@@ -196,35 +208,35 @@ public class ListScreen extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
+        } );
     }
 
     public void populateLists(List<WoOverview> mainList) {
         for (WoOverview o : mainList) {
             switch (o.getStatus()) {
                 case "repaired":
-                    active.add(o);
+                    active.add( o );
                     break;
                 case "in progress":
-                    finished.add(o);
+                    finished.add( o );
                     break;
                 case "not started":
-                    nonpm.add(o);
+                    nonpm.add( o );
                     break;
             }
         }
-        search = findViewById(R.id.btnSearch);
-        search.setOnClickListener((View view) -> {
+        search = findViewById( R.id.btnSearch );
+        search.setOnClickListener( (View view) -> {
             searchedCar.clear();
             boolean found = false;
             selection = 4;
-            if (txtSearch.getText().toString().compareTo("") == 0) {
-                oAdapter = new ObjectAdapter(objects);
-                rView.setAdapter(oAdapter);
+            if (txtSearch.getText().toString().compareTo( "" ) == 0) {
+                oAdapter = new ObjectAdapter( objects );
+                rView.setAdapter( oAdapter );
                 selection = 0;
             } else {
 
-                Log.d("CSID", DataManager.getSharedInstance(getApplicationContext()).mapDocOfSpecificType("description", txtSearch.getText().toString()) + " " + txtSearch.getText().toString());
+                Log.d( "CSID", DataManager.getSharedInstance( getApplicationContext() ).mapDocOfSpecificType( "description", txtSearch.getText().toString() ) + " " + txtSearch.getText().toString() );
                 //  searchedCar = DataManager.getSharedInstance(getApplicationContext()).mapDocOfSpecificType("type", "wo");
 
 //                for (WoOverview wo : DataManager.getSharedInstance(getApplicationContext()).mapDocOfSpecificType("type", "wo")) {
@@ -235,36 +247,36 @@ public class ListScreen extends AppCompatActivity {
 //                        found=true;
 //                    }
                 // }
-                DataManager.getSharedInstance(getApplicationContext()).mapDocOfSpecificType("description", "wo")
+                DataManager.getSharedInstance( getApplicationContext() ).mapDocOfSpecificType( "description", "wo" )
                         .stream()
-                        .filter(wo -> wo.getDescription().compareTo(txtSearch.getText().toString()) == 0)
-                        .forEach(wo -> searchedCar.add(wo));
+                        .filter( wo -> wo.getDescription().compareTo( txtSearch.getText().toString() ) == 0 )
+                        .forEach( wo -> searchedCar.add( wo ) );
 
-                oAdapter = new ObjectAdapter(searchedCar);
-                rView.setAdapter(oAdapter);
+                oAdapter = new ObjectAdapter( searchedCar );
+                rView.setAdapter( oAdapter );
 
                 found = searchedCar.size() > 0;
 
             }
             if (found) {
-                Toast.makeText(getApplicationContext(), "Car found!", Toast.LENGTH_LONG).show();
+                Toast.makeText( getApplicationContext(), "Car found!", Toast.LENGTH_LONG ).show();
             } else {
-                Toast.makeText(getApplicationContext(), "Car not found/list cleared.", Toast.LENGTH_LONG).show();
+                Toast.makeText( getApplicationContext(), "Car not found/list cleared.", Toast.LENGTH_LONG ).show();
             }
-            txtSearch.setText("");
-        });
+            txtSearch.setText( "" );
+        } );
 
     }
 
     private void prepareData() {
-        mappedDocuments = DataManager.getSharedInstance(getApplicationContext()).mapDocument("type");
+        mappedDocuments = DataManager.getSharedInstance( getApplicationContext() ).mapDocument( "type" );
 
         oAdapter.notifyDataSetChanged();
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        Toast.makeText(parent.getContext(),
-                "OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
-                Toast.LENGTH_SHORT).show();
+        Toast.makeText( parent.getContext(),
+                "OnItemSelectedListener : " + parent.getItemAtPosition( pos ).toString(),
+                Toast.LENGTH_SHORT ).show();
     }
 }

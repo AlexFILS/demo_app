@@ -3,6 +3,8 @@ package com.example.coco.demoapp.Activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         txtAlert = findViewById(R.id.txtAlert);
         txtAlert.setVisibility(View.INVISIBLE);
 
-        //create some users and store them in shared prefs.
+       //create some users and store them in shared prefs.
         //a boolean value is store in the chace memory and it will tell us if the users
         //are already stored or not and act accordingly, this will spare us the trouble of storing the users
         //inside  sharedpreferences everytime when the app is launched
