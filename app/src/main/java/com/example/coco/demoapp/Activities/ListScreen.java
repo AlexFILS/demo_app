@@ -24,18 +24,12 @@ import com.example.coco.demoapp.Adapters.ObjectAdapter;
 import com.example.coco.demoapp.ClickListeners.RecyclerItemClickListener;
 import com.example.coco.demoapp.Managers.DataManager;
 import com.example.coco.demoapp.Model.WoOverview;
-import com.example.coco.demoapp.Objects.ExpandListChild;
-import com.example.coco.demoapp.Objects.ExpandListGroup;
-import com.example.coco.demoapp.Objects.ObjectsMainList;
 import com.example.coco.demoapp.R;
-
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import static android.support.v7.widget.LinearLayoutManager.*;
-import static java.util.Comparator.comparingInt;
+
 
 public class ListScreen extends AppCompatActivity {
     private List<WoOverview> objects = new ArrayList<>();
